@@ -1,34 +1,50 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	public float mouseSensitivityX { get; set;}
-	public float mouseSensitivityY { get; set;}
+    //Normal Movement Variables
+    Vector3 moveAmount;
+    Vector3 smoothMoveVelocity;
+    float verticalLookRotation;
+    public float jumpForce = 250.0f;
+    public float walkSpeed = 10.0f;
 
-	public float walkSpeed = 10.0f;
-	Vector3 moveAmount;
-	Vector3 smoothMoveVelocity;
-	public Canvas menu;
+    //Repulser Variables
+    public float launchPower;
+    public float explosionR;
+    public ParticleSystem ps;
 
-	Transform cameraT;
-	float verticalLookRotation;
+    //General Use Variables
+    Rigidbody rigidbodyR;
+    public float mouseSensitivityX { get; set; }
+    public float mouseSensitivityY { get; set; }
+    public bool grounded;
+    public LayerMask groundedMask;
+    public LayerMask resetMask;
+    Transform cameraT;
 
-	Rigidbody rigidbodyR;
+    //Menu Variables
+    bool cursorVisible;
+    private int canLook = 1;
+    private bool canMove = true;
+    public Canvas menu;
+    public Slider sens;
 
-	public float jumpForce = 250.0f;
-	public bool grounded;
-	public LayerMask groundedMask;
-	public LayerMask resetMask;
+    //Tether Variables
+    SpringJoint joint;
+    public LineRenderer line;
+    public Transform startPoint, player;
+    public Vector3 endPoint, beginning;
+    public float maxDistance;
+    
 
-	bool cursorVisible;
-
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
 	{
-		
-		mouseSensitivityX = 1.0f;
+        line.enabled = false;
+        mouseSensitivityX = 1.0f;
 		mouseSensitivityY = mouseSensitivityX;
 		cameraT = Camera.main.transform;
 		rigidbodyR = GetComponent<Rigidbody>();
@@ -39,9 +55,12 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+        mouseSensitivityX = sens.value;
+        mouseSensitivityY = sens.value;
+
 		// rotation
-		transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivityX);
-		verticalLookRotation += Input.GetAxis("Mouse Y") * mouseSensitivityY;
+		transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivityX * canLook);
+		verticalLookRotation += Input.GetAxis("Mouse Y") * mouseSensitivityY * canLook;
 		verticalLookRotation = Mathf.Clamp(verticalLookRotation, -90, 90);
 		cameraT.localEulerAngles = Vector3.left * verticalLookRotation;
 
@@ -53,7 +72,7 @@ public class PlayerController : MonoBehaviour
 		// jump
 		if (Input.GetButtonDown("Jump"))
 		{
-			if (grounded)
+			if (grounded && canMove)
 			{
 				rigidbodyR.AddForce(transform.up * jumpForce);
 				
@@ -61,7 +80,32 @@ public class PlayerController : MonoBehaviour
 			
 		}
 
-		Ray ray = new Ray(transform.position, -transform.up);
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (grounded && canMove)
+            {
+                Repulser();
+            }
+
+        }
+
+        //Tether Controller
+        if (Input.GetMouseButtonDown(1))
+        {
+            line.enabled = true;
+            startTether();
+
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            stopTether();
+            line.enabled = false;
+        }
+
+        beginning = startPoint.position;
+
+
+        Ray ray = new Ray(transform.position, -transform.up);
 		RaycastHit hit;
 
 		if (Physics.Raycast(ray, out hit, 2 + .2f, groundedMask))
@@ -82,11 +126,16 @@ public class PlayerController : MonoBehaviour
 			{
 				UnlockMouse();
 				menu.gameObject.SetActive(true);
+                canLook = 0;
+                canMove = false;
+                
 			}
 			else
 			{
 				LockMouse();
 				menu.gameObject.SetActive(false);
+                canLook = 1;
+                canMove = true;
 			}
 		}
 	}
@@ -142,5 +191,79 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Repulser()
+    {
+        Debug.Log("asdf");
+        Ray ray = new Ray(transform.position, cameraT.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 6 + .2f, groundedMask))
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+
+        if (grounded)
+        {
+            rigidbodyR.AddExplosionForce(launchPower, hit.point, explosionR);
+
+            ps.Play();
+
+
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+        DrawTether();
+    }
+
+    void startTether()
+    {
+
+        RaycastHit hit;
+        if (Physics.Raycast(cameraT.position, cameraT.forward, out hit, maxDistance, groundedMask))
+        {
+
+            endPoint = hit.point;
+
+            joint = player.gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = endPoint;
+
+            float distanceFromPoint = Vector3.Distance(player.position, endPoint);
+
+            joint.maxDistance = distanceFromPoint * .8f;
+            joint.maxDistance = distanceFromPoint * .25f;
+
+
+            joint.spring = 1.5f;
+            joint.damper = 4f;
+            joint.massScale = 10f;
+
+            line.positionCount = 2;
+
+
+
+        }
+    }
+    void stopTether()
+    {
+        line.positionCount = 0;
+
+        Destroy(joint);
+    }
+
+    void DrawTether()
+    {
+        line.SetPosition(0, beginning);
+        line.SetPosition(1, endPoint);
+    }
 
 }
+
+

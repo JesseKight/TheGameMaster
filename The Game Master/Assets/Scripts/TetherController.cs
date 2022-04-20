@@ -30,18 +30,17 @@ public class TetherController : MonoBehaviour
     void Update()
     {
 
-      
-            if (Input.GetMouseButtonDown(1))
-            {
-                line.enabled = true;
-                startTether();
+        if (Input.GetMouseButtonDown(1))
+        {
+            line.enabled = true;
+            startTether();
                 
-            }
-            if (Input.GetMouseButtonUp(1))
-            {
-                stopTether();
-                line.enabled = false;
-            }
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+              stopTether();
+              line.enabled = false;
+        }
 
         beginning = startPoint.position;
     }

@@ -23,11 +23,15 @@ public class RepulserController : MonoBehaviour
 	public LayerMask groundedMask;
 	Rigidbody rigidbodyR;
 
+    private bool canMove;
+
 
     // Start is called before the first frame update
     void Start()
     {
 		rigidbodyR = GetComponent<Rigidbody>();
+
+        
 
 	}
 

@@ -330,8 +330,6 @@ GameObject:
   - component: {fileID: 3311836533620765706}
   - component: {fileID: 3311836533620765709}
   - component: {fileID: 3311836533620765703}
-  - component: {fileID: 3311836533620765700}
-  - component: {fileID: 3311836533620765701}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -433,17 +431,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419e976ce3354ca4895c43e78bbd4dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivityX: 2
-  mouseSensitivityY: 2
-  walkSpeed: 10
   jumpForce: 370
-  grounded: 0
+  walkSpeed: 10
+  launchPower: 800
+  explosionR: 15
+  ps: {fileID: 7612146004537746617, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+  grounded: 1
   groundedMask:
     serializedVersion: 2
     m_Bits: 64
   resetMask:
     serializedVersion: 2
     m_Bits: 0
+  menu: {fileID: 1829171858501879765, guid: 0e892ab8988b7384c8b93772db6dfa08, type: 3}
+  line: {fileID: 3311836533429793803}
+  startPoint: {fileID: 3311836533429793807}
+  player: {fileID: 3311836533620765702}
+  endPoint: {x: 0, y: 0, z: 0}
+  beginning: {x: 0, y: 0, z: 0}
+  maxDistance: 50
 --- !u!65 &3311836533620765703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -457,44 +463,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6628059, y: 2.0541425, z: 0.71950084}
   m_Center: {x: 0.004966587, y: -0.027071476, z: 0.0012709349}
---- !u!114 &3311836533620765700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311836533620765708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eccf1489369d8a44e9991d30c9393448, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 3311836532706147565}
-  ps: {fileID: 0}
-  launchPower: 800
-  explosionR: 0
-  groundedMask:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &3311836533620765701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311836533620765708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cda9fa555a15b8428e14da897f1da63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundedMask:
-    serializedVersion: 2
-    m_Bits: 64
-  line: {fileID: 3311836533429793803}
-  startPoint: {fileID: 3311836533429793807}
-  cam: {fileID: 3311836532706147562}
-  player: {fileID: 3311836533620765702}
-  endPoint: {x: 0, y: 0, z: 0}
-  beginning: {x: 0, y: 0, z: 0}
-  maxDistance: 50
