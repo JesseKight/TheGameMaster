@@ -4,12 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-	public float mouseSensitivityX = 1.0f;
-	public float mouseSensitivityY = 1.0f;
+	public float mouseSensitivityX { get; set;}
+	public float mouseSensitivityY { get; set;}
 
 	public float walkSpeed = 10.0f;
 	Vector3 moveAmount;
 	Vector3 smoothMoveVelocity;
+	public Canvas menu;
 
 	Transform cameraT;
 	float verticalLookRotation;
@@ -26,8 +27,12 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		
+		mouseSensitivityX = 1.0f;
+		mouseSensitivityY = mouseSensitivityX;
 		cameraT = Camera.main.transform;
 		rigidbodyR = GetComponent<Rigidbody>();
+		menu.gameObject.SetActive(false);
 		LockMouse();
 	}
 
@@ -71,15 +76,17 @@ public class PlayerController : MonoBehaviour
 		
 
 		/* Lock/unlock mouse on click */
-		if (Input.GetKeyDown("`"))
+		if (Input.GetKeyDown(KeyCode.Escape))
 		{
 			if (!cursorVisible)
 			{
 				UnlockMouse();
+				menu.gameObject.SetActive(true);
 			}
 			else
 			{
 				LockMouse();
+				menu.gameObject.SetActive(false);
 			}
 		}
 	}
@@ -109,9 +116,15 @@ public class PlayerController : MonoBehaviour
         {
 			
 			SceneManager.LoadScene("Level2");
-			UnlockMouse();
+			
         }
 		else if (other.CompareTag("Level2End"))
+		{
+
+			SceneManager.LoadScene("Level3");
+			
+		}
+		else if (other.CompareTag("Level3End"))
 		{
 
 			SceneManager.LoadScene("Finish");
