@@ -8,6 +8,7 @@ TagManager:
   - Level1End
   - Level2End
   - Reset
+  - Level3End
   layers:
   - Default
   - TransparentFX

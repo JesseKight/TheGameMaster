@@ -7,9 +7,11 @@ public class PlayerController : MonoBehaviour
     //Normal Movement Variables
     Vector3 moveAmount;
     Vector3 smoothMoveVelocity;
+    Vector3 moveDir;
     float verticalLookRotation;
     public float jumpForce = 250.0f;
     public float walkSpeed = 10.0f;
+
 
     //Repulser Variables
     public float launchPower;
@@ -65,7 +67,7 @@ public class PlayerController : MonoBehaviour
 		cameraT.localEulerAngles = Vector3.left * verticalLookRotation;
 
 		// movement
-		Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
+		moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
 		Vector3 targetMoveAmount = moveDir * walkSpeed;
 		moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
 
