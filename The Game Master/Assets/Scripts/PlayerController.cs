@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
 
 
     //Repulser Variables
+    RaycastHit hitLaunch;
+    private bool canLaunch;
     public float launchPower;
     public float explosionR;
     public ParticleSystem ps;
+
 
     //General Use Variables
     Rigidbody rigidbodyR;
@@ -71,8 +74,20 @@ public class PlayerController : MonoBehaviour
 		Vector3 targetMoveAmount = moveDir * walkSpeed;
 		moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
 
-		// jump
-		if (Input.GetButtonDown("Jump"))
+        //repulser logic
+        Ray rayLaunch = new Ray(transform.position, cameraT.transform.forward);
+        
+        if (Physics.Raycast(rayLaunch, out hitLaunch, 6 + .2f, groundedMask))
+        {
+            canLaunch = true;
+        }
+        else
+        {
+            canLaunch = false;
+        }
+
+        // jump
+        if (Input.GetButtonDown("Jump"))
 		{
 			if (grounded && canMove)
 			{
@@ -82,9 +97,10 @@ public class PlayerController : MonoBehaviour
 			
 		}
 
+        //repulser
         if (Input.GetMouseButtonDown(0))
         {
-            if (grounded && canMove)
+            if (canMove && canLaunch)
             {
                 Repulser();
             }
@@ -196,26 +212,14 @@ public class PlayerController : MonoBehaviour
     private void Repulser()
     {
         Debug.Log("asdf");
-        Ray ray = new Ray(transform.position, cameraT.transform.forward);
-        RaycastHit hit;
+        
 
-        if (Physics.Raycast(ray, out hit, 6 + .2f, groundedMask))
-        {
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }
+        rigidbodyR.AddExplosionForce(launchPower, hitLaunch.point, explosionR);
 
-        if (grounded)
-        {
-            rigidbodyR.AddExplosionForce(launchPower, hit.point, explosionR);
-
-            ps.Play();
+        ps.Play();
 
 
-        }
+        
 
     }
 

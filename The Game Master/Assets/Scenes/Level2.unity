@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3843,7 +3843,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9f216c4bfd186e549bd2f0f2b9fa3311, type: 2}
+  - {fileID: 2100000, guid: 08d9acbda4090e540ba259d16b43a2b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3902,7 +3902,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 566371281}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 3
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4462,7 +4462,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 15000
+    maxNumParticles: 700
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
     rotation3D: 0
@@ -4844,8 +4844,8 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
-          time: 0.023727417
-          value: 1
+          time: 0.02897644
+          value: 0.5846157
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -14089,6 +14089,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3311836533620765702, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3311836533620765702, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 61
       objectReference: {fileID: 0}
@@ -14157,6 +14161,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3311836533620765709, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 1296476610}
+    - target: {fileID: 3311836533620765709, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
       propertyPath: menu
       value: 
       objectReference: {fileID: 861804161}
@@ -14164,6 +14172,10 @@ PrefabInstance:
       propertyPath: sens
       value: 
       objectReference: {fileID: 1365067908}
+    - target: {fileID: 3311836533620765709, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+      propertyPath: grounded
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
 --- !u!1001 &1493235738
@@ -17624,15 +17636,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_TranslationAtRest.x
-      value: 0
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_TranslationAtRest.y
-      value: 0
+      value: 8.9
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_TranslationAtRest.z
-      value: 0
+      value: 8.25
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_Sources.Array.data[0].sourceTransform

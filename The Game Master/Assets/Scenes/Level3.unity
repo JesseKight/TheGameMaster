@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22297,15 +22297,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746598, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -5.03
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746598, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 37.175
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746598, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.25
+      value: 165.8
       objectReference: {fileID: 0}
     - target: {fileID: 7612146004537746598, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22335,6 +22335,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_IsContraintActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_TranslationAtRest.x
+      value: -3.767037
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_TranslationAtRest.y
+      value: 37.904408
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_TranslationAtRest.z
+      value: 164.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612146004537746599, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 929177849}
+    - target: {fileID: 7612146004537746616, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_IsContraintActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612146004537746616, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+      propertyPath: m_Sources.Array.data[0].sourceTransform
+      value: 
+      objectReference: {fileID: 1498471515}
     - target: {fileID: 7612146004537746619, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
       propertyPath: m_Name
       value: ParticleSystem
@@ -35388,6 +35416,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3311836533620765706, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3311836533620765708, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -35418,6 +35450,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+--- !u!4 &929177849 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3311836533620765702, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+  m_PrefabInstance: {fileID: 929177848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &930467083
 GameObject:
   m_ObjectHideFlags: 0
@@ -42136,9 +42173,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1115167865}
-  - component: {fileID: 1115167864}
   - component: {fileID: 1115167863}
   - component: {fileID: 1115167862}
+  - component: {fileID: 1115167866}
   m_Layer: 0
   m_Name: End
   m_TagString: Level3End
@@ -42223,22 +42260,6 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!58 &1115167864
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1115167861}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -5.378237}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!4 &1115167865
 Transform:
   m_ObjectHideFlags: 0
@@ -42246,14 +42267,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115167861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -74.5, y: 35.25, z: 163.5}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!135 &1115167866
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115167861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2829666
+  m_Center: {x: 0, y: 0.9501708, z: -0.2668649}
 --- !u!4 &1115425292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644, type: 3}
@@ -56821,6 +56855,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 475418, guid: 1acd03bc537c24f3484ab4d6f07b9e02, type: 3}
   m_PrefabInstance: {fileID: 836287542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1498471515 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3311836532706147562, guid: ca44551f999af3a42be4a2922efab8eb, type: 3}
+  m_PrefabInstance: {fileID: 929177848}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1498479794 stripped
 Transform:
