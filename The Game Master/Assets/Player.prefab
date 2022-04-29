@@ -436,7 +436,7 @@ MonoBehaviour:
   walkSpeed: 10
   launchPower: 800
   explosionR: 15
-  ps: {fileID: 7612146004537746617, guid: 19218987e3ef3cd4ba2793bea44fa888, type: 3}
+  ps: {fileID: 0}
   grounded: 1
   groundedMask:
     serializedVersion: 2
@@ -444,8 +444,10 @@ MonoBehaviour:
   resetMask:
     serializedVersion: 2
     m_Bits: 0
-  menu: {fileID: 1829171858501879765, guid: 0e892ab8988b7384c8b93772db6dfa08, type: 3}
+  menu: {fileID: 0}
   sens: {fileID: 0}
+  music: {fileID: 0}
+  backgroundMusic: {fileID: 4566152270595614687}
   line: {fileID: 3311836533429793803}
   startPoint: {fileID: 3311836533429793807}
   player: {fileID: 3311836533620765702}
@@ -478,7 +480,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a3dba60f6c2f0d549af7b9801056a004, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.9
   Loop: 1
   Mute: 0
   Spatialize: 0

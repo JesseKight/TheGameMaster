@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     private bool canMove = true;
     public Canvas menu;
     public Slider sens;
+    public Slider music;
+    public AudioSource backgroundMusic;
 
     //Tether Variables
     SpringJoint joint;
@@ -62,6 +64,8 @@ public class PlayerController : MonoBehaviour
 	{
         mouseSensitivityX = sens.value;
         mouseSensitivityY = sens.value;
+
+        backgroundMusic.volume = music.value;
 
 		// rotation
 		transform.Rotate(Vector3.up * Input.GetAxis("Mouse X") * mouseSensitivityX * canLook);
