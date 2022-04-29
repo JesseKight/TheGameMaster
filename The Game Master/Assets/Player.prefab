@@ -412,14 +412,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3311836533620765708}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0.2
-  m_AngularDrag: 0.1
+  m_Mass: 2
+  m_Drag: 0.01
+  m_AngularDrag: 0.01
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &3311836533620765709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +445,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   menu: {fileID: 0}
+  crosshair: {fileID: 0}
   sens: {fileID: 0}
   music: {fileID: 0}
   backgroundMusic: {fileID: 4566152270595614687}

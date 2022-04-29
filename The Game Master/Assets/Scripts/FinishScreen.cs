@@ -17,6 +17,6 @@ public class FinishScreen : MonoBehaviour
     // Update is called once per frame
     void Reload()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(0);
     }
 }

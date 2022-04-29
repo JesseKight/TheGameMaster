@@ -4,48 +4,47 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    //Normal Movement Variables
+    [Header("Normal Movement Variables")]
+    public float jumpForce = 250.0f;
+    public float walkSpeed = 10.0f;
     Vector3 moveAmount;
     Vector3 smoothMoveVelocity;
     Vector3 moveDir;
     float verticalLookRotation;
-    public float jumpForce = 250.0f;
-    public float walkSpeed = 10.0f;
 
-
-    //Repulser Variables
-    RaycastHit hitLaunch;
-    private bool canLaunch;
+    [Header("Repulser Variables")]
     public float launchPower;
     public float explosionR;
     public ParticleSystem ps;
+    RaycastHit hitLaunch;
+    private bool canLaunch;
 
-
-    //General Use Variables
-    Rigidbody rigidbodyR;
+    [Header("General Use Variables")]
+    public bool grounded;
     public float mouseSensitivityX { get; set; }
     public float mouseSensitivityY { get; set; }
-    public bool grounded;
     public LayerMask groundedMask;
     public LayerMask resetMask;
+    Rigidbody rigidbodyR;
     Transform cameraT;
 
-    //Menu Variables
-    bool cursorVisible;
-    private int canLook = 1;
-    private bool canMove = true;
+    [Header("Menu Variables")]
     public Canvas menu;
+    public Canvas crosshair;
     public Slider sens;
     public Slider music;
     public AudioSource backgroundMusic;
+    bool cursorVisible;
+    private int canLook = 1;
+    private bool canMove = true;
 
-    //Tether Variables
-    SpringJoint joint;
+    [Header("Tether Variables")]
     public LineRenderer line;
     public Transform startPoint, player;
     public Vector3 endPoint, beginning;
     public float maxDistance;
-    
+    SpringJoint joint;
+
 
     // Use this for initialization
     void Start()
@@ -148,6 +147,7 @@ public class PlayerController : MonoBehaviour
 			{
 				UnlockMouse();
 				menu.gameObject.SetActive(true);
+                crosshair.gameObject.SetActive(false);
                 canLook = 0;
                 canMove = false;
                 
@@ -156,6 +156,7 @@ public class PlayerController : MonoBehaviour
 			{
 				LockMouse();
 				menu.gameObject.SetActive(false);
+                crosshair.gameObject.SetActive(true);
                 canLook = 1;
                 canMove = true;
 			}
@@ -208,15 +209,13 @@ public class PlayerController : MonoBehaviour
 		
 		if (collision.gameObject.CompareTag("Reset"))
         {
-			SceneManager.LoadScene("Level2");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			
         }
     }
 
     private void Repulser()
     {
-        Debug.Log("asdf");
-        
 
         rigidbodyR.AddExplosionForce(launchPower, hitLaunch.point, explosionR);
 
