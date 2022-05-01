@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float launchPower;
     public float explosionR;
     public ParticleSystem ps;
+    public AudioSource repulserSound;
     RaycastHit hitLaunch;
     private bool canLaunch;
 
@@ -221,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
         ps.Play();
 
-
+        repulserSound.Play();
         
 
     }
